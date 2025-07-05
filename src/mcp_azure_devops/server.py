@@ -20,12 +20,17 @@ register_all_prompts(mcp)
 
 def main():
     """Entry point for the command-line script."""
+    import os
     parser = argparse.ArgumentParser(
         description="Run the Azure DevOps MCP server")
     parser.parse_args()
 
-    # Explicitly run with SSE for local testing
-    mcp.run(transport="sse")
+    # Get the port from Render (default to 8000 locally)
+    port = int(os.environ.get("PORT", 8000))
+
+    # Run server on all interfaces using SSE transport
+    mcp.run(host="0.0.0.0", port=port, transport="sse")
 
 if __name__ == "__main__":
     main()
+
