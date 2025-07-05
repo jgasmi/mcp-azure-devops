@@ -17,7 +17,6 @@ mcp = FastMCP("Azure DevOps")
 register_all(mcp)
 register_all_prompts(mcp)
 
-
 def main():
     """Entry point for the command-line script."""
     parser = argparse.ArgumentParser(
